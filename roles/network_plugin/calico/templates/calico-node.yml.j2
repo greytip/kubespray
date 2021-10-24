@@ -305,8 +305,8 @@ spec:
 {% endif %}
             periodSeconds: 10
             initialDelaySeconds: 10
-            timeoutSeconds: {{ calico_node_livenessprobe_timeout | default(10) }}
             failureThreshold: 6
+            timeoutSeconds: 10
           readinessProbe:
             exec:
               command:
@@ -316,8 +316,8 @@ spec:
 {% endif %}
               - -felix-ready
             periodSeconds: 10
-            timeoutSeconds: {{ calico_node_readinessprobe_timeout | default(10) }}
             failureThreshold: 6
+            timeoutSeconds: 10
           volumeMounts:
             - mountPath: /lib/modules
               name: lib-modules
